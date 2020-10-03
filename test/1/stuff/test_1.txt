@@ -1,0 +1,21 @@
+test 1
+{{include:test_2.txt}}
+{{include:./test_2.txt}}
+{{include:../stuff/test_2.txt}}
+{{include:../stuff/test_2.txt}}
+
+//{{include:/home/brandon/Code/gravity/test/stuff/test_2.txt}}
+{{include:test_2.txt}}
+{{include:borked.txt
+    {{include:test_3.txt}}
+    //{{include:test_3.txt}}
+    {{include:../stuff/things/*/main.txt}}
+    {{include:everything}}
+
+
+
+
+
+
+{{include:test_2.txt}}
+    {{include:test_2.txt}}

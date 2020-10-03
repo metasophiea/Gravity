@@ -1,0 +1,5 @@
+[package]
+name = "gravity"
+version = "1.0.0"
+authors = ["metasophiea"]
+edition = "2018"
