@@ -12,7 +12,7 @@ For compiling together files which use the Gravity in-file commands
 
     include > a straightforward file-into-file text assembler, eg. {{include:aFile.txt}}
 
-## Examples:
+## Examples
 
     gravity -r project/mainFile.txt -o build/output.txt
     gravity --root project/mainFile.txt --output build/output.tx --verbose
