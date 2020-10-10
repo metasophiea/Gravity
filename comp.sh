@@ -1,9 +1,11 @@
+compile=false
 production=false
 
 for ((a = 1; a <= $#; a+=2)); do
     b=$(($a + 1))
     case ${!a} in
         -runTest) testToRun=${!b}; ;;
+        -compile) compile=true; ((a--)); ;;
         -production) production=true; ((a--)); ;;
         -target) target=${!b}; ;;
     esac
@@ -26,10 +28,14 @@ if [ ! -z "$testToRun" ]; then
     fi
 fi
 
-if $production; then
-    if [ ! -z "$target" ]; then 
-        cargo build --release --target $target
+if $compile; then
+    if $production; then
+        if [ ! -z "$target" ]; then 
+            cargo build --release --target $target
+        else 
+            cargo build --release
+        fi
     else 
-        cargo build --release
+        cargo build
     fi
 fi
