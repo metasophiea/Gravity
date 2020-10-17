@@ -8,6 +8,23 @@ for ((a = 1; a <= $#; a+=2)); do
         -compile) compile=true; ((a--)); ;;
         -production) production=true; ((a--)); ;;
         -target) target=${!b}; ;;
+        --help) 
+            echo "-runTest : compile the debug version and run this specified test (eg. -runTest 1)"
+            echo "-compile : declare that we are to compile"
+            echo "-production : declare that we are to compile the optimised release version"
+            echo "-target : select which target to use"
+            echo "-list : list out the (potential) production compilation targets"
+            echo "-listCompiled : list out the compiled targets"
+            exit;
+        ;;
+        -list) 
+            rustc --print target-list
+            exit;
+        ;;
+        -listCompiled) 
+            cat availableVersions
+            exit;
+        ;;
     esac
 done
 
@@ -30,12 +47,15 @@ fi
 
 if $compile; then
     if $production; then
-        if [ ! -z "$target" ]; then 
-            cargo build --release --target $target
-        else 
-            cargo build --release
+        if [ -z "$target" ]; then 
+            target=$(rustup show | grep Default | cut -c15-)
         fi
+
+        echo "building for target \"$target\""
+        cargo build --release --target $target
     else 
         cargo build
     fi
+
+    ls target | grep -v 'debug\|release' > availableVersions
 fi
