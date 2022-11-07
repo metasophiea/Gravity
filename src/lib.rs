@@ -3,13 +3,13 @@ use command::Command;
 
 mod library;
 
-pub struct Obj {
+pub struct Gravity {
     verbose: bool,
     output_file: std::fs::File,
     output_file_address: String,
 }
-impl Obj {
-    pub fn new(verbose: bool, output_file_address: String) -> Obj {
+impl Gravity {
+    pub fn new(verbose: bool, output_file_address: String) -> Gravity {
         let (output_file, output_file_address) = match std::fs::File::create(&output_file_address) {
             Ok(file) => {
                 (file, library::get_full_address_of_file(&output_file_address).unwrap())
@@ -21,14 +21,14 @@ impl Obj {
             },
         };
 
-        Obj {
+        Gravity {
             verbose,
             output_file,
             output_file_address,
         }
     }
 
-    pub fn run_command(&mut self, command: Command, full_file_address: &str) {
+    fn run_command(&mut self, command: Command, full_file_address: &str) {
         let full_file_address = match library::get_full_address_of_file(full_file_address) {
             Ok(a) => a,
             Err(_) => {
@@ -62,7 +62,7 @@ impl Obj {
     }
     
     pub fn include(&mut self, file_address: &str, padding: &str, current_working_file_address: &str) -> bool {
-        fn recursive_include(this: &mut Obj, paths: std::fs::ReadDir, post_address_string: &str, padding: &str, current_working_file_address: &str) -> bool {
+        fn recursive_include(this: &mut Gravity, paths: std::fs::ReadDir, post_address_string: &str, padding: &str, current_working_file_address: &str) -> bool {
             let mut sucessful_includes = true;
             for path in paths {
                 let file = path.unwrap().path();

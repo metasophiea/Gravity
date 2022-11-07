@@ -1,6 +1,6 @@
 use std::io::BufRead;
 
-use crate::gravity::command::Command;
+use crate::command::Command;
 
 pub fn read_lines<P>(filename: P) -> std::io::Result<std::io::Lines<std::io::BufReader<std::fs::File>>>
 where P: AsRef<std::path::Path>, {
