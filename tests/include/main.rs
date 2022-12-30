@@ -41,7 +41,7 @@ fn check_file_equality(file_address_a:&str, file_address_b:&str) -> Result<bool,
 fn include_1() {
     const OUTPUT_FILE_NAME:&str = "test_output_1";
 
-    let mut gravity = Gravity::new(false, OUTPUT_FILE_NAME.into());
+    let mut gravity = Gravity::new(OUTPUT_FILE_NAME.into());
     gravity.include("tests/include/test_structure_1/input.txt", "", "");
 
     match check_file_equality(
@@ -59,7 +59,7 @@ fn include_1() {
 fn include_2() {
     const OUTPUT_FILE_NAME:&str = "test_output_2";
 
-    let mut gravity = Gravity::new(false, OUTPUT_FILE_NAME.into());
+    let mut gravity = Gravity::new(OUTPUT_FILE_NAME.into());
     gravity.include("tests/include/test_structure_2/input.txt", "", "");
 
     match check_file_equality(
@@ -77,7 +77,7 @@ fn include_2() {
 fn include_3() {
     const OUTPUT_FILE_NAME:&str = "test_output_3";
 
-    let mut gravity = Gravity::new(false, OUTPUT_FILE_NAME.into());
+    let mut gravity = Gravity::new(OUTPUT_FILE_NAME.into());
     gravity.include("tests/include/test_structure_3/input.txt", "", "");
 
     match check_file_equality(
@@ -95,7 +95,7 @@ fn include_3() {
 fn include_4() {
     const OUTPUT_FILE_NAME:&str = "test_output_4";
 
-    let mut gravity = Gravity::new(false, OUTPUT_FILE_NAME.into());
+    let mut gravity = Gravity::new(OUTPUT_FILE_NAME.into());
     gravity.include("tests/include/test_structure_4/input.txt", "", "");
 
     match check_file_equality(
@@ -113,7 +113,7 @@ fn include_4() {
 fn include_10() {
     const OUTPUT_FILE_NAME:&str = "test_output_5";
 
-    let mut gravity = Gravity::new(false, OUTPUT_FILE_NAME.into());
+    let mut gravity = Gravity::new(OUTPUT_FILE_NAME.into());
     gravity.include("tests/include/test_structure_5/input.txt", "", "");
 
     match check_file_equality(
