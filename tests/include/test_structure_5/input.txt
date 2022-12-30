@@ -1,1 +1,1 @@
-{{include:stuff/test_1.txt}}
+{{include:folder/*/main.txt}}
