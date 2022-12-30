@@ -15,12 +15,12 @@ test 2 commin' atcha
     welcome to test 3
     //{{include:test_3.txt}}
     a-main
-    c-main
     b-main
+    c-main
     a-main
-    here's some text
-    c-main
     b-main
+    c-main
+    here's some text
 
 
 

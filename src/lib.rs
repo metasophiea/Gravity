@@ -1,3 +1,5 @@
+use std::fs::DirEntry;
+
 mod command;
 use command::Command;
 
@@ -64,8 +66,12 @@ impl Gravity {
     pub fn include(&mut self, file_address: &str, padding: &str, current_working_file_address: &str) -> bool {
         fn recursive_include(this: &mut Gravity, paths: std::fs::ReadDir, post_address_string: &str, padding: &str, current_working_file_address: &str) -> bool {
             let mut sucessful_includes = true;
+
+            let mut paths:Vec<DirEntry> = paths.into_iter().filter_map(|path|path.ok()).collect();
+            paths.sort_by(|a, b| a.file_name().partial_cmp(&b.file_name()).unwrap());
+
             for path in paths {
-                let file = path.unwrap().path();
+                let file = path.path();
                 let file_this_time = format!("{}{}", &file.to_str().unwrap(), &post_address_string);
                 let file_this_time = match library::get_full_address_of_file(&file_this_time) {
                     Ok(address) => address,
@@ -80,6 +86,7 @@ impl Gravity {
                 }
                 sucessful_includes &= this.include(&file_this_time, &padding, &current_working_file_address);
             }
+
             sucessful_includes
         }
 
