@@ -1,0 +1,2 @@
+{{include:file.txt}}
+	{{include:file.txt}}

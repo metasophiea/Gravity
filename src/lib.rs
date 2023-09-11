@@ -2,6 +2,8 @@ use std::fs::{canonicalize, DirEntry, File};
 use std::io::{BufRead, BufReader};
 use std::path::{Path, PathBuf};
 
+mod utils;
+use utils::get_padding;
 mod command;
 use command::Command;
 
@@ -174,7 +176,7 @@ impl Gravity {
         if self.verbose { println!(">> running command: {command}"); }
 
         match command {
-            Command::Include(path, mut padding) => {
+            Command::Include { path, mut padding }  => {
                 let path = if path.is_absolute() {
                     path
                 } else {

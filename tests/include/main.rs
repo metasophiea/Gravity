@@ -183,3 +183,21 @@ fn include_8() {
 
     remove_file(OUTPUT_FILE_NAME).unwrap();
 }
+
+#[test]
+fn include_9() {
+    const OUTPUT_FILE_NAME:&str = "tests/include/test_structure_9/output.txt";
+
+    let mut gravity = Gravity::new_verbose(OUTPUT_FILE_NAME.into());
+    gravity.include(None, Path::new("tests/include/test_structure_9/input.txt"), "");
+
+    match check_file_equality(
+        OUTPUT_FILE_NAME,
+        "tests/include/test_structure_9/correct_output.txt"
+    ) {
+        Ok(result) => assert!(result),
+        Err(err_msg) => panic!("{err_msg}"),
+    }
+
+    remove_file(OUTPUT_FILE_NAME).unwrap();
+}
