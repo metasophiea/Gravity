@@ -1,5 +1,13 @@
 [package]
 name = "gravity"
-version = "1.1.0"
+version = "1.2.0"
 authors = ["metasophiea"]
 edition = "2021"
+
+[lib]
+name = "gravity_lib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "gravity"
+path = "src/bin.rs"
