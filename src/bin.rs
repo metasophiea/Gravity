@@ -1,6 +1,6 @@
 use std::path::{Path, PathBuf};
 
-use gravity_lib::Gravity;
+use gravity::Gravity;
 
 const VERSION:(u8, u8, u8) = (1, 2, 0);
 

@@ -2,7 +2,7 @@ use std::fs::{remove_file, File};
 use std::io::{BufReader, Read};
 use std::path::Path;
 
-use gravity_lib::Gravity;
+use gravity::Gravity;
 
 fn check_file_equality(file_address_a:&str, file_address_b:&str) -> Result<bool, &'static str> {
     if let Result::Ok(file_a) = File::open(file_address_a) {
